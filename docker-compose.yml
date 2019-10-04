@@ -10,7 +10,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      ACME_AGREE: true
+      ACME_AGREE: "true"
       CADDY_EMAIL: "${CADDY_EMAIL}"
   influxdb:
     image: influxdb
