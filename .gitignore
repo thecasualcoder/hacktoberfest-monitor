@@ -1,3 +1,5 @@
 .env
 /influxdb-data
 /grafana-data
+/.caddy
+/log

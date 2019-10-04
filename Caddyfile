@@ -1,0 +1,7 @@
+contributions.hacktoberfest.thecasualcoder.in
+tls {$CADDY_EMAIL}
+
+ext .html   # Clean URLs
+errors error.log {       # Error log
+    404 error-404.html   # Custom error page
+}
