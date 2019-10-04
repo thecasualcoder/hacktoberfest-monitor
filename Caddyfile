@@ -1,4 +1,4 @@
-contributions.hacktoberfest.thecasualcoder.in
+{$CADDY_HOST}
 tls {$CADDY_EMAIL}
 
 ext .html   # Clean URLs
