@@ -17,3 +17,8 @@ proxy /api http://influxdb:8086 {
     transparent
     without /api
 }
+
+proxy / http://web {
+    fail_timeout 5s
+    transparent
+}
