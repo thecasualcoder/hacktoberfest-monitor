@@ -1,4 +1,4 @@
-# Hacktoberfest Guage
+# Hacktoberfest Monitor
 
 A dashboard for tracking hactoberfest PR contributions.
 
