@@ -5,3 +5,15 @@ ext .html   # Clean URLs
 errors error.log {       # Error log
     404 error-404.html   # Custom error page
 }
+
+proxy /dashboard http://grafana:3000 {
+    fail_timeout 5s
+    transparent
+    without /dashboard
+}
+
+proxy /api http://influxdb:8086 {
+    fail_timeout 5s
+    transparent
+    without /api
+}
