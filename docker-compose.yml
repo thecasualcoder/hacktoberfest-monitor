@@ -14,7 +14,7 @@ services:
       CADDY_EMAIL: "${CADDY_EMAIL}"
   influxdb:
     image: influxdb
-    volumes: 
+    volumes:
       - "./influxdb-data:/var/lib/influxdb"
     environment:
       INFLUXDB_USER: "hacktober_collector"
@@ -24,8 +24,8 @@ services:
     image: grafana/grafana
     environment:
       GF_SECURITY_ADMIN_PASSWORD: "${GF_SECURITY_ADMIN_PASSWORD}"
+      GF_SERVER_ROOT_URL: "${GF_SERVER_ROOT_URL}"
     ports:
       - "3000:3000"
     volumes:
       - "./grafana-data:/var/lib/grafana"
-    
