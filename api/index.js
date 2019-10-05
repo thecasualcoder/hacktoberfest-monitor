@@ -26,6 +26,21 @@ app.post('/api/pr', async (req, res) => {
         return
     }
 
+    try {
+        const prUrl = new URL(prLink)
+        if(prUrl.host !== "github.com") {
+            throw Error("not github.com")
+        }
+
+        await axios({
+            method: 'head',
+            url: prLink
+        })
+    } catch (e) {
+        res.status(400).json({ "message": "wrong PR URL" })
+        return
+    }
+
     const body = `pull_request,pr_link=${prLink.trim().replace(/ +/g, "-")},language=${language.trim().replace(/ +/g, "-")} value=1`
 
     const url = `${dbUrl}/write?db=hacktober_metrics`
