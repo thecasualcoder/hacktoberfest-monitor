@@ -28,7 +28,7 @@ app.post('/api/pr', async (req, res) => {
 
     const body = `pull_request,pr_link=${prLink.trim().replace(/ +/g, "-")},language=${language.trim().replace(/ +/g, "-")} value=1`
 
-    const url = `${dbUrl}/api/write?db=hacktober_metrics`
+    const url = `${dbUrl}/write?db=hacktober_metrics`
     console.log(`Sending request to: ${url}`)
     try {
         await axios({
