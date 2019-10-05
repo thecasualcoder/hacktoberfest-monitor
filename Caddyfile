@@ -12,10 +12,9 @@ proxy /leaderboard http://grafana:3000 {
     without /leaderboard
 }
 
-proxy /api http://influxdb:8086 {
+proxy /api http://api:3000 {
     fail_timeout 5s
     transparent
-    without /api
 }
 
 proxy / http://web {

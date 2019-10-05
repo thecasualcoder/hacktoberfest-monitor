@@ -12,8 +12,8 @@ const schema = {
   type: "object",
   required: ["pr_link", "language"],
   properties: {
-    pr_link: {type: "string", title: "Pull Request Link"},
-    language: {type: "string", title: "Language", "enum": languages}
+    pr_link: { type: "string", title: "Pull Request Link" },
+    language: { type: "string", title: "Language", "enum": languages }
   }
 };
 
@@ -23,28 +23,19 @@ function App() {
 
   return (
     <Form schema={schema}
-    onChange={log("changed")}
-    onSubmit={(data) => {
-      const prLink = data.formData.pr_link.trim().replace(/ +/g, "-")
-      const language = data.formData.language.trim().replace(/ +/g, "-")
+      onChange={log("changed")}
+      onSubmit={(data) => {
+        console.log(data.formData)
 
-      console.log(prLink)
-      console.log(language)
-
-      const body = `pull_request,pr_link=${prLink},language=${language} value=1`
-      axios({
-        method: 'post',
-        url: 'https://contributions.hacktoberfest.thecasualcoder.in/api/write?db=hacktober_metrics',
-        data: body,
-        })
-        .then(function (response) {
+        axios.post('/api/pr', data.formData)
+          .then(function (response) {
             console.log(response);
-        })
-        .catch(function (response) {
+          })
+          .catch(function (response) {
             console.log(response);
-        });
-    }}
-    onError={log("errors")} />
+          });
+      }}
+      onError={log("errors")} />
   );
 }
 

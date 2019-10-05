@@ -34,3 +34,7 @@ services:
     build:
       context: web/
       dockerfile: Dockerfile
+  api:
+    build:
+      context: api/
+      dockerfile: Dockerfile
