@@ -30,7 +30,10 @@ function App() {
                       await axios.post('/api/pr', data.formData);
                       alert.show("Thanks for your contribution");
                   } catch (err) {
-                      alert.show("Unable to save your contribution, please contact the volunteer");
+                      const {message} = err.response.data || {message: ''};
+                      if (message) {
+                          alert.show(message);
+                      } else alert.show("Unable to save your contribution, please contact the volunteer");
                   }
               }}
               onError={log("errors")}/>
