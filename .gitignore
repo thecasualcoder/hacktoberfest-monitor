@@ -3,3 +3,5 @@
 /grafana-data
 /.caddy
 /log
+.idea
+*.iml
