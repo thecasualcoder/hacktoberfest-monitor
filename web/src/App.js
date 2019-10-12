@@ -9,7 +9,7 @@ const languages = [
 ].sort();
 
 const schema = {
-    title: "Hacktoberfest - ThoughtWorks Chennai",
+    title: "Hacktoberfest - ThoughtWorks",
     type: "object",
     required: ["pr_link", "language"],
     properties: {
