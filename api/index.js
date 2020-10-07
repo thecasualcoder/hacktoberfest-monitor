@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const rateLimit = require("express-rate-limit");
 const axios = require('axios');
+const config = require('config')
 const app = express();
-const port = 3000;
+const port = config.app.port;
 
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 15 minutes
@@ -28,8 +29,10 @@ app.post('/api/pr', async (req, res) => {
 
     try {
         const prUrl = new URL(prLink);
-        if (prUrl.host !== "github.com") {
-            throw Error("not github.com");
+        console.log(config.hosts)
+        if (!config.hosts.includes(prUrl.host)) {
+            console.log(prUrl.host+ " not allowed");
+            throw Error(prUrl.host + " not allowed");
         }
 
         await axios({
@@ -37,6 +40,7 @@ app.post('/api/pr', async (req, res) => {
             url: prLink
         })
     } catch (e) {
+        console.log(e);
         res.status(400).json({"message": "wrong PR URL"});
         return;
     }
