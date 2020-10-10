@@ -2,6 +2,7 @@ FROM node:10.16.3 as source
 WORKDIR /opt/app
 COPY ./package.json ./
 RUN npm install --production
+ENV PUBLIC_URL https://hacktoberfest2020.geeknight.in/submit/
 COPY . ./
 RUN npm run build
 

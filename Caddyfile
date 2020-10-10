@@ -1,4 +1,4 @@
-contributions.hacktoberfest.thecasualcoder.in
+hacktoberfest2020.geeknight.in
 tls {$CADDY_EMAIL}
 
 ext .html   # Clean URLs
@@ -17,7 +17,12 @@ proxy /api http://api:3000 {
     transparent
 }
 
-proxy / http://web {
+proxy /submit http://web {
     fail_timeout 5s
     transparent
+    without /submit
+}
+
+proxy / https://twchennai.github.io/hacktoberfest {
+    fail_timeout 5s
 }
