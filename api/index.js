@@ -16,7 +16,7 @@ app.use(limiter);
 app.use(bodyParser.json());
 
 const dbProtocol = process.env.DB_PROTOCOL || "http";
-const dbHost = process.env.DB_HOST || "localhost";
+const dbHost = process.env.DB_HOST || "influxdb";
 const dbPort = process.env.DB_PORT || "8086";
 const dbUrl = `${dbHost}://${dbHost}:${dbPort}`
 const influx = new Influx.InfluxDB({
@@ -61,6 +61,7 @@ app.post('/api/pr', async (req, res) => {
             return res.status(409).json({ "message": "This PR already added" });
         }
     } catch (e) {
+        console.log(e);
         return res.status(500).json({ "message": "Internal error" });
     }
 
