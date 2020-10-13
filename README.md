@@ -15,3 +15,5 @@ $ docker-compose up -d
 ```
 
 2. Add influx as Grafana datasource. Visit http://localhost:3000 and add datasource with InfluxDB URL http://influxdb:8086
+
+3. Import `grafana-dashboard.json`
